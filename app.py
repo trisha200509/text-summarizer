@@ -1,14 +1,6 @@
 import streamlit as st
 
 st.title("📝 Text Summarizer")
-st.markdown("""
-### 👩‍💻 Developed by:
-- Vishal Chauhan
-- Awantika Sharma
-- Nikhil Gupta
-- Shreyasi Choudhary  
-- Trisha Anand 
-""")
 
 st.write("This project summarizes long text into short meaningful content using NLP techniques.")
 
