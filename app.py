@@ -2,7 +2,7 @@ import streamlit as st
 from PyPDF2 import PdfReader
 
 # Page config
-st.set_page_config(page_title="AI Summarizer X", page_icon="🧠", layout="wide")
+st.set_page_config(page_title="Text Summarizer", page_icon="🧠", layout="wide")
 
 # 🌈 INSANE CSS
 st.markdown("""
@@ -37,10 +37,10 @@ mode = st.sidebar.radio("Input Type:", ["Text", "PDF"])
 length = st.sidebar.slider("Summary Length", 1, 5, 2)
 
 st.sidebar.markdown("---")
-st.sidebar.caption("🚀 AI Summarizer X")
+st.sidebar.caption("🚀 Text Summarizer")
 
 # 🏷️ Title
-st.markdown('<div class="main-title">🧠 AI Summarizer X</div>', unsafe_allow_html=True)
+st.markdown('<div class="main-title">🧠 Text Summarizer</div>', unsafe_allow_html=True)
 st.markdown('<div class="subtitle">Next-gen text summarization app</div>', unsafe_allow_html=True)
 
 # 📄 Input
@@ -68,7 +68,7 @@ def simple_summarize(text, n):
 # 🚀 Generate
 if st.button("✨ Generate Summary"):
     if text.strip():
-        with st.spinner("🚀 Generating AI summary..."):
+        with st.spinner("🚀 Generating  summary..."):
             summary = simple_summarize(text, length)
 
         st.markdown("### 📌 Summary")
@@ -98,4 +98,4 @@ if st.button("✨ Generate Summary"):
 
 # Footer
 st.markdown("---")
-st.caption("💡 AI Summarizer X | Advanced Project")
+st.caption("💡 Text summarizer| Mini Project")
