@@ -1,5 +1,4 @@
 streamlit
 PyPDF2
-transformers
-torch
-sentencepiece
+sumy
+nltk
