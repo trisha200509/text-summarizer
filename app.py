@@ -1,6 +1,10 @@
 import streamlit as st
 from PyPDF2 import PdfReader
 
+from sumy.parsers.plaintext import PlaintextParser
+from sumy.nlp.tokenizers import Tokenizer
+from sumy.summarizers.lsa import LsaSummarizer
+
 # Page config
 st.set_page_config(page_title="Text Summarizer", page_icon="🧠", layout="wide")
 
@@ -61,15 +65,23 @@ else:
     text = st.text_area("Paste your text here", height=200)
 
 # 🧠 Summarizer
-def simple_summarize(text, n):
-    sentences = text.split(".")
-    return ". ".join(sentences[:n])
+def summarize_text(text, lines=3):
+    parser = PlaintextParser.from_string(text, Tokenizer("english"))
+    summarizer = LsaSummarizer()
+
+    summary = summarizer(parser.document, lines)
+
+    final_summary = ""
+    for sentence in summary:
+        final_summary += str(sentence) + " "
+
+    return final_summary
 
 # 🚀 Generate
 if st.button("✨ Generate Summary"):
     if text.strip():
         with st.spinner("🚀 Generating  summary..."):
-            summary = simple_summarize(text, length)
+            summary = summarize_text(text, length)
 
         st.markdown("### 📌 Summary")
         st.success(summary)
