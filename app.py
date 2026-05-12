@@ -4,7 +4,7 @@ from transformers import pipeline
 
 # Page config
 st.set_page_config(page_title="Text Summarizer", page_icon="🧠", layout="wide")
-summarizer = pipeline(task="summarization", model="facebook/bart-large-cnn")
+summarizer = pipeline("summarization", model="facebook/bart-large-cnn")
 
 # 🌈 INSANE CSS
 st.markdown("""
