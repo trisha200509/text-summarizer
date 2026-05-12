@@ -1,10 +1,8 @@
 import streamlit as st
 from PyPDF2 import PdfReader
-from transformers import pipeline
 
 # Page config
 st.set_page_config(page_title="Text Summarizer", page_icon="🧠", layout="wide")
-summarizer = pipeline("summarization", model="facebook/bart-large-cnn")
 
 # 🌈 INSANE CSS
 st.markdown("""
@@ -63,18 +61,9 @@ else:
     text = st.text_area("Paste your text here", height=200)
 
 # 🧠 Summarizer
-def simple_summarize(text):
-
-    text = text[:2000]
-
-    result = summarizer(
-        text,
-        max_length=120,
-        min_length=40,
-        do_sample=False
-    )
-
-    return result[0]['summary_text']
+def simple_summarize(text, n):
+    sentences = text.split(".")
+    return ". ".join(sentences[:n])
 
 # 🚀 Generate
 if st.button("✨ Generate Summary"):
